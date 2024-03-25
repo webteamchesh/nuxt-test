@@ -6,7 +6,7 @@ const date = new Date().toLocaleString('en-GB')
 <template>
   <div>
     <h1>Nuxt test</h1>
-    <p>The date and time is: {{ date }}</p>
+    <p>{{ date }}</p>
   </div>
 </template>
 
