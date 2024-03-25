@@ -10,6 +10,7 @@ const date = new Date().toLocaleString('en-GB')
   </div>
 </template>
 
+
 <style scoped>
 h1 {
   color: DarkBlue;
