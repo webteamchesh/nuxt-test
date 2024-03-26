@@ -12,7 +12,8 @@ let {data} = await useAsyncData('data', () => $client.entries.list({
 }));
 
 let items = data.value.items || [];
-
+const date = new Date().toLocaleString('en-GB');
+    
 const toggle = () => {
   items.forEach(
     (item) =>
@@ -26,6 +27,7 @@ const toggle = () => {
 </script>
 
 <template>
+  <p>{{ date }}</p>
   <p>Queries:
   <span v-for="k in keys" :key="k">"{{k}}": "{{query[k]}}"</span></p>
   <h2 class="fs-3">Entry listing</h2>
