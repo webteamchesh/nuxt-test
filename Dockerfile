@@ -1,11 +1,10 @@
-ARG NODE_VERSION=18.14.2
+ARG NODE_VERSION=20.9.0
 
 FROM node:${NODE_VERSION}-slim as base
 
 ARG PORT=3001
 
 ENV NODE_ENV=production
-LABEL org.opencontainers.image.source="https://github.com/webTeamChesh/nuxtTest"
 
 WORKDIR /src
 
@@ -26,6 +25,5 @@ FROM base
 ENV PORT=$PORT
 
 COPY --from=build /src/.output /src/.output
-
 
 CMD [ "node", ".output/server/index.mjs" ]
