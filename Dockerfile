@@ -1,6 +1,6 @@
 ARG NODE_VERSION=20.9.0
 
-FROM node:${NODE_VERSION}-slim as base
+FROM node:${NODE_VERSION} as base
 
 ARG PORT=3001
 
