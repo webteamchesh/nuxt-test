@@ -1,18 +1,12 @@
 
 <script setup>
-const { $client } = useNuxtApp();
-let {data, error} = await useAsyncData('data', () => $client.entries.list({
-    contentTypeId: 'test',
-    versionStatus: 'latest',
-    pageOptions: {
-      pageSize: 100,
-    },
-}));
+// Bring in the items from Pinia.
+import { useEntriesStore } from '@/stores/entries';
+const entriesStore = useEntriesStore;
+let store = entriesStore();
+const items = [...store.copyItems];
 
-let items = data.value.items || [];
-
-const date = new Date().toLocaleString('en-GB')
-
+// Toggle case function to test js in clinet.
 const toggle = () => {
   items.forEach(
     (item) =>
@@ -27,10 +21,15 @@ const toggle = () => {
 
 
 <template>
-  <p>{{date}}</p>
-  <h2 class="fs-3">Entry listing</h2>
-  <ul v-if="items">
-    <li v-for='item in items' :key='item.sys.id'>{{item.title}}</li>
-  </ul>
-  <button type="button" @click="toggle">Toggle</button>
+  <div class="listing">
+    <h2 class="fs-3">Entry listing</h2>
+    <ul v-if="items">
+      <li v-for="item in items" :key="item.sys.id">
+        <NuxtLink :to="`/entries/${item.sys.slug}`">{{item.title}}</NuxtLink>
+      </li>
+    </ul>
+    <button class="btn btn-dark" type="button" @click="toggle">
+      Toggle case
+    </button>
+  </div>
 </template>
