@@ -13,7 +13,8 @@ await callOnce(async () => {
     let keys = Object.keys(process.env);
     keys.sort();
     env.value = keys.reduce((acc,k) => {
-      return [...acc, `${k}: ${process.env[k]}`];
+
+      return k.includes("CONTENSIS") || (k.toLowerCase() === k) ? [...acc, `${k}: ${process.env[k]}`] : acc;
     }, []);
   } catch(ignore) {
     env.value = [];
@@ -26,7 +27,7 @@ await callOnce(async () => {
   <div class="container">
     <h1>Nuxt test</h1>
     <p>{{ date }}</p>
-    <p><strong>Queries:</strong> <span v-for="k in Object.keys(query)" :key="k">"{{k}}": "{{query[k]}}"</span></p>
+    <p><strong>Queries:</strong> <span class="pe-1" v-for="k in Object.keys(query)" :key="k">"{{k}}": "{{query[k]}}"</span></p>
     <p><strong>Environment variables</strong></p>
     <div class="env mb-3">
       <ul class="list-unstyled">
