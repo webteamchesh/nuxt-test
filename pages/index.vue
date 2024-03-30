@@ -1,13 +1,24 @@
 
-<script setup lang="ts">
-definePageMeta({
-  layout: 'default'
-})
+<script setup>
+
+import { useAppStore } from '@/stores/app';
+let store = useAppStore();
+const description = store.description;
+const h1  = store.h1;
+const title = store.title;
+
+useHead({
+  title: title,
+  meta: [{
+    name: 'description',
+    content: description
+  }],
+});
 </script>
 
 <template>
   <div class="container">
-    <home-page></home-page>
-    <entry-listing></entry-listing>
+    <h1>{{h1}}</h1>
+    <EntryListing />
   </div>
 </template>

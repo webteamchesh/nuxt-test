@@ -1,10 +1,9 @@
 
 <script setup>
 // Bring in the items from Pinia.
-import { useEntriesStore } from '@/stores/entries';
-const entriesStore = useEntriesStore;
-let store = entriesStore();
-const items = [...store.copyItems];
+import { useAppStore } from '@/stores/app';
+let store = useAppStore();
+const items = [...store.getItems];
 
 // Toggle case function to test js in clinet.
 const toggle = () => {
@@ -17,6 +16,7 @@ const toggle = () => {
         .join('')),
   );
 };
+
 </script>
 
 

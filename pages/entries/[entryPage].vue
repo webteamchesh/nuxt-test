@@ -14,11 +14,18 @@
 
 <script setup>
   // Get entries from store.
-  import { useEntriesStore } from '~/stores/entries';
+  import { useAppStore } from '~/stores/app';
   import { storeToRefs } from 'pinia';
-  const entriesStore = useEntriesStore();
-  const  { copyItems }  = storeToRefs(entriesStore);
+  const appStore = useAppStore();
+  const  { getItems }  = storeToRefs(appStore);
   const slug = useRoute().params.entryPage;
   // Set item using the route param.
-  const item = copyItems.value.find(e => e.sys.slug === slug);
+  const item = getItems.value.find(e => e.sys.slug === slug);
+  useHead({
+    title: item.title,
+    meta: [{
+      name: 'description',
+      content: item.description
+    }],
+  });
 </script>
