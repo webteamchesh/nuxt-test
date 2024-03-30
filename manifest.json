@@ -1,4 +1,4 @@
 {
-  "static_paths": ["/static/*", "/static/builds/*", "/static/builds/meta/*"],
+  "static_paths": ["/static/"],
   "enableFullUriRouting": true
 }

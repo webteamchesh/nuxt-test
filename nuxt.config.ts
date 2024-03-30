@@ -1,5 +1,4 @@
 export default defineNuxtConfig({
-  builder: 'webpack',
   plugins: [
     '~/plugins/contensis'
   ],
