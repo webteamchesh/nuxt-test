@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  runtimeConfig: {
+   accessToken: process.env.accessToken,
+   alias: process.env.alias,
+   projectId: process.env.projectId,
+  },
   plugins: [
     '~/plugins/contensis'
   ],

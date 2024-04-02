@@ -5,6 +5,8 @@
 
   // Get entry slug from route.
   const slug = useRoute().params.entryPage;
+console.log(slug);
+console.log(items.value);
 
   // Set item using the route param.
   const item = items.value.find(e => e.sys.slug === slug);

@@ -1,10 +1,4 @@
 <script setup lang="ts">
-// Optionally log all the env variables
-let keys = Object.keys(process.env);
-keys.sort();
-keys.forEach((k) => {
-  console.log(`${k}: ${process.env[k]}`);
-});
 
 // Bring in the Contensis client from plugins.
 const { $client } = useNuxtApp();
@@ -16,8 +10,21 @@ const query = useRoute().query;
   const title  = useState('title', () => "Page not found");
 const description = useState('description', () => "");
 const items = useState('items', () => []);
-const path = useState('path', () => useRoute().path)
+const path = useState('path', "")
 let contentType;
+
+// Get path from node.
+if (query.nodeId) {
+  await callOnce(async () => {
+    let { data } = await useAsyncData('data', () =>
+      $client.nodes.get(query.nodeId),
+    );
+    if (data.value) {
+      path.value = data.value.path;
+      console.log(path.value);
+    }
+  });
+}
 
 // Use the Contensis client to fetch the entry and set some state.
 if (query.entryId) {
