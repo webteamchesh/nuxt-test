@@ -18,7 +18,7 @@ const toggle = (arr) => {
 
 
 <template>
-  <div v-if="items.length" class="row g-0 listing">
+  <div v-if="items.length" class="listing">
     <h2 class="fs-3">Entry listing</h2>
     <ul>
       <!-- When using a v-for, you need to set a key. -->
