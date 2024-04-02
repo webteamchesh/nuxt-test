@@ -14,6 +14,5 @@ export default defineNuxtConfig({
   css: ["bootstrap/dist/css/bootstrap.min.css", "~/assets/main.css"],
   app: {
     buildAssetsDir: '/static/',
-    baseURL: '/nuxt-listing/'
   },
 });
