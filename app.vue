@@ -13,6 +13,7 @@ const items = useState('items', () => []);
 const path = useState('path', "")
 let contentType;
 
+  
 // Get path from node.
 if (query.nodeId) {
   await callOnce(async () => {
