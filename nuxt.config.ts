@@ -7,7 +7,4 @@ export default defineNuxtConfig({
   app: {
     buildAssetsDir: '/static/',
   },
-  modules: [
-    '@pinia/nuxt',
-  ],
 });

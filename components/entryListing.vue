@@ -1,13 +1,10 @@
-
 <script setup>
-// Bring in the items from Pinia.
-import { useAppStore } from '@/stores/app';
-let store = useAppStore();
-const items = [...store.getItems];
+// This is the listing component, so we need the items we saved in app.vue.
+const items = useState("items");
 
-// Toggle case function to test js in clinet.
-const toggle = () => {
-  items.forEach(
+// Toggle case function to test js in client.
+const toggle = (arr) => {
+  arr.forEach(
     (item) =>
       (item.title = Array.from(item.title)
         .map((ch) =>
@@ -23,12 +20,15 @@ const toggle = () => {
 <template>
   <div class="listing">
     <h2 class="fs-3">Entry listing</h2>
-    <ul v-if="items">
+    <ul v-if="items.length">
+      <!-- When using a v-for, you need to set a key. -->
       <li v-for="item in items" :key="item.sys.id">
+        <!-- NuxtLink creates a router link for us. -->
+        <!-- This will be a dynamic link to the relevant page. -->
         <NuxtLink :to="`/entries/${item.sys.slug}`">{{item.title}}</NuxtLink>
       </li>
     </ul>
-    <button class="btn btn-dark" type="button" @click="toggle">
+    <button class="btn btn-dark" type="button" @click="toggle(items)">
       Toggle case
     </button>
   </div>
