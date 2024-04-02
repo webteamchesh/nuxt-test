@@ -5,7 +5,8 @@ keys.sort();
 let myEnv = keys.reduce((acc,k) => {
   return [...acc, `${k}: ${process.env[k]}`];
 }, []);
-console.log(myEnv);
+//console.log(myEnv);
+
 
 // Bring in the Contensis client from plugins.
 const { $client } = useNuxtApp();
@@ -17,6 +18,7 @@ const query = useRoute().query;
 const title  = useState('title', "Page not found");
 const description = useState('description', "");
 const items = useState('items', "[]");
+const path = useState('path', () => useRoute().path)
 let contentType;
 
 // Use the Contensis client to fetch the entry and set some state.
