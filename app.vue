@@ -20,7 +20,7 @@ if (query.nodeId) {
       $client.nodes.get(query.nodeId),
     );
     if (data.value) {
-      path.value = data.value.path;
+      path.value = `${data.value.path}/`;
     }
   });
 }
