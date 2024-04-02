@@ -2,10 +2,9 @@
 // Optionally log all the env variables
 let keys = Object.keys(process.env);
 keys.sort();
-let myEnv = keys.reduce((acc,k) => {
-  return [...acc, `${k}: ${process.env[k]}`];
-}, []);
-//console.log(myEnv);
+keys.forEach((k) => {
+  console.log(`${k}: ${process.env[k]}`);
+});
 
 
 // Bring in the Contensis client from plugins.
@@ -15,9 +14,9 @@ const { $client } = useNuxtApp();
 const query = useRoute().query;
 
 // Set up some state.
-const title  = useState('title', "Page not found");
-const description = useState('description', "");
-const items = useState('items', "[]");
+  const title  = useState('title', () => "Page not found");
+const description = useState('description', () => "");
+const items = useState('items', () => []);
 const path = useState('path', () => useRoute().path)
 let contentType;
 

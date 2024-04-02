@@ -4,17 +4,19 @@ const title = useState("title");
 const description = useState("description");
 
 useHead({
-    title: title,
-    meta: [{
-      name: 'description',
-      content: description
-    }]
+  title: title,
+  meta: [{
+    name: 'description',
+    content: description
+  }]
 });
 </script>
 
 <template>
   <div class="container">
-    <h1>{{title}}</h1>
-    <EntryListing />
+    <div class="row g-0">
+      <h1>{{title}}</h1>
+      <EntryListing />
+    </div>
   </div>
 </template>

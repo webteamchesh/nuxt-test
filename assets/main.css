@@ -17,14 +17,7 @@
   padding: 0;
   font-size: 2rem;
   text-align: center;
-  height: 10vh;
-}
-.env {
-  overflow: scroll;
-  height: 15rem;
-  font-family: "Monospace";
-  padding: .3rem;
-  background-color: White;
+  height: 12vh;
 }
 h1 {
   color: DarkGreen;

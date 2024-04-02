@@ -18,9 +18,9 @@ const toggle = (arr) => {
 
 
 <template>
-  <div class="listing">
+  <div v-if="items.length" class="row g-0 listing">
     <h2 class="fs-3">Entry listing</h2>
-    <ul v-if="items.length">
+    <ul>
       <!-- When using a v-for, you need to set a key. -->
       <li v-for="item in items" :key="item.sys.id">
         <!-- NuxtLink creates a router link for us. -->
