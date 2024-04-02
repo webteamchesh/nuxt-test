@@ -1,6 +1,7 @@
 <script setup>
   // Get the items and path from the state.
   const items = useState("items");
+  const path = useState("path");
 
   // Get entry slug from route.
   const slug = useRoute().params.entryPage;
@@ -26,7 +27,7 @@
       <p>{{item.description}}</p>
       <p>id: {{item.sys.id}}</p>
       <div>
-        <RouterLink to="/" type="button" class="btn btn-dark mt-3">Back</RouterLink>
+        <RouterLink :to="path" type="button" class="btn btn-dark mt-3">Back</RouterLink>
       </div>
     </div>
   </div>

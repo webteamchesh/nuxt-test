@@ -10,6 +10,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true},
   css: ["bootstrap/dist/css/bootstrap.min.css", "~/assets/main.css"],
   app: {
-    buildAssetsDir: '/static/'
+    buildAssetsDir: '/static/',
   },
 });
