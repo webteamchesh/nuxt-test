@@ -52,10 +52,6 @@ if (contentType) {
   });
 }
 
-// Set the favicon path.
-useHead({
-  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-});
 </script>
 
 <template>

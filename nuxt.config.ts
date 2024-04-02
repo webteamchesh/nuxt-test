@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/contensis'
   ],
+  head: {
+    link: [{ rel: 'icon', type: 'image/ico', href: "~/assets/favicon.ico" }]
+  },
   devtools: { enabled: true},
   css: ["bootstrap/dist/css/bootstrap.min.css", "~/assets/main.css"],
   app: {
