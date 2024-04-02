@@ -6,7 +6,6 @@ keys.forEach((k) => {
   console.log(`${k}: ${process.env[k]}`);
 });
 
-
 // Bring in the Contensis client from plugins.
 const { $client } = useNuxtApp();
 
