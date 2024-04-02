@@ -10,22 +10,21 @@ const query = useRoute().query;
 const title  = useState('title', () => "");
 const description = useState('description', () => "");
 const items = useState('items', () => []);
-const path = useState('path', "")
+//const path = useState('path', "")
 let contentType;
 
 // Get path from node.
-if (query.nodeId) {
-  await callOnce(async () => {
-    let { data } = await useAsyncData('data', () =>
-      $client.nodes.get(query.nodeId),
-    );
-    if (data.value) {
-      path.value = `${data.value.path}/`;
-    }
-  });
-}
+//if (query.nodeId) {
+//  await callOnce(async () => {
+//    let { data } = await useAsyncData('data', () =>
+//      $client.nodes.get(query.nodeId),
+//    );
+//    if (data.value) {
+//      path.value = `${data.value.path}/`;
+//    }
+//  });
+//}
 
-  
 // Use the Contensis client to fetch the entry and set some state.
 if (query.entryId) {
   await callOnce(async () => {
