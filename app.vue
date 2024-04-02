@@ -7,7 +7,6 @@ let myEnv = keys.reduce((acc,k) => {
 }, []);
 console.log(myEnv);
 
-
 // Bring in the Contensis client from plugins.
 const { $client } = useNuxtApp();
 
