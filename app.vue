@@ -12,7 +12,6 @@ const description = useState('description', () => "");
 const items = useState('items', () => []);
 let contentType;
 
-
 // Use the Contensis client to fetch the entry and set some state.
 await callOnce(async () => {
   if (query.entryId) {
