@@ -15,7 +15,7 @@ useHead({
 <template>
   <div class="container">
     <div class="row g-0">
-      <h1>{{title}}</h1>
+      <h1>{{title || "Page not found"}}</h1>
       <EntryListing />
     </div>
   </div>

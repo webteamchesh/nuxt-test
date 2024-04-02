@@ -7,28 +7,15 @@ const { $client } = useNuxtApp();
 const query = useRoute().query;
 
 // Set up some state.
-  const title  = useState('title', () => "Page not found");
+const title  = useState('title', () => "");
 const description = useState('description', () => "");
 const items = useState('items', () => []);
-const path = useState('path', "")
 let contentType;
 
-// Get path from node.
-if (query.nodeId) {
-  await callOnce(async () => {
-    let { data } = await useAsyncData('data', () =>
-      $client.nodes.get(query.nodeId),
-    );
-    if (data.value) {
-      path.value = data.value.path;
-      console.log(path.value);
-    }
-  });
-}
 
 // Use the Contensis client to fetch the entry and set some state.
-if (query.entryId) {
-  await callOnce(async () => {
+await callOnce(async () => {
+  if (query.entryId) {
     let { data } = await useAsyncData('data', () =>
       $client.entries.get(query.entryId),
     );
@@ -37,21 +24,21 @@ if (query.entryId) {
       description.value = data.value.entryDescription;
       contentType = data.value.contentTypeId;
     }
-  });
-}
+  }
+});
 
 // This app is intended to use for a listing page.
 // So here we fetch the entries that we need to list.
-if (contentType) {
-  await callOnce(async () => {
+await callOnce(async () => {
+  if (contentType) {
     let { data } = await useAsyncData('data', () =>
       $client.entries.list(contentType),
     );
     if (data.value) {
       items.value = data.value.items;
     }
-  });
-}
+  }
+});
 
 // Set the favicon path.
 useHead({
