@@ -25,6 +25,7 @@ if (query.nodeId) {
   });
 }
 
+  
 // Use the Contensis client to fetch the entry and set some state.
 if (query.entryId) {
   await callOnce(async () => {
