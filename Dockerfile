@@ -2,8 +2,6 @@ ARG NODE_VERSION=20.9.0
 
 FROM node:${NODE_VERSION}-slim as base
 
-ARG PORT=3001
-
 ENV NODE_ENV=production
 
 WORKDIR /src
@@ -11,18 +9,20 @@ WORKDIR /src
 # Build
 FROM base as build
 
-COPY --link package.json package-lock.json manifest.json ./
-RUN npm install --production=false
+COPY package*.json ./
+RUN npm install --production \
+    && npm cache clean --force \
+    && rm -rf /tmp/*
 
-COPY --link . .
-
+COPY  . .
+COPY ./manifest.json /manifest.json
 RUN npm run build
-RUN npm prune
+
 
 # Run
 FROM base
 
-ENV PORT=$PORT
+EXPOSE 3001
 
 COPY --from=build /src/.output /src/.output
 
