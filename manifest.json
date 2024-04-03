@@ -1,4 +1,4 @@
 {
-  "static_paths": ["/nuxt-listing/cached-assets/*"],
+  "static_paths": ["/nuxt-listing/cached-assets/"],
   "enableFullUriRouting": true
 }
