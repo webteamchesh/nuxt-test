@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-  
 // Bring in the Contensis client from plugins.
 const { $client } = useNuxtApp();
 
