@@ -21,7 +21,7 @@ RUN npm run build
 
 # Run
 FROM base
-
+ENV PORT=3001
 EXPOSE 3001
 
 COPY --from=build /src/.output /src/.output
