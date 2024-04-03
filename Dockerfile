@@ -15,9 +15,7 @@ RUN npm install --production \
     && rm -rf /tmp/*
 
 COPY  . .
-
 RUN npm run build
-
 
 # Run
 FROM base
