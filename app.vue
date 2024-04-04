@@ -23,6 +23,7 @@ let contentType;
 //    }
 //}
 
+  
 // Use the Contensis client to fetch the entry and set some state.
 if (query.entryId) {
   let { data, error } = await useAsyncData('data', () =>
