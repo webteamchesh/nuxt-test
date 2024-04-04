@@ -12,8 +12,5 @@ export default defineNuxtConfig({
   app: {
     buildAssetsDir: '/cached-assets/',
     baseURL: '/nuxt-listing/',
-    head: {
-      link: [{ rel: 'icon',  type: 'image/x-icon', href: "~/assets/favicon.ico" }]
-    },
   },
 });
