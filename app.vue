@@ -48,7 +48,7 @@ if (contentType) {
 }
 
 useHead({
-  link: [{ rel: 'icon', type: 'image/png', href: 'favicon.ico' }]
+  link: [{ rel: 'icon', type: 'image/png', href: 'favicon.png' }]
 })
 </script>
 
