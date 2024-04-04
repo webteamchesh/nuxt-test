@@ -1,7 +1,6 @@
 <script setup>
   // Get the items and path from the state.
   const items = useState("items");
-  //const path = useState("path");
 
   // Get entry slug from route.
   const slug = useRoute().params.entryPage;

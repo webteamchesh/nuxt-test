@@ -7,45 +7,41 @@ const { $client } = useNuxtApp();
 const query = useRoute().query;
 
 // Set up some state.
-const title  = useState('title', () => "Page not found");
+const title  = useState('title', () => "");
 const description = useState('description', () => "");
 const items = useState('items', () => []);
-//const path = useState('path', "")
 let contentType;
 
-// Get path from node.
-//if (query.nodeId) {
-//    let { data } = await useAsyncData('data', () =>
-//      $client.nodes.get(query.nodeId),
-//    );
-//    if (data.value) {
-//      path.value = `${data.value.path}/`;
-//    }
-//}
 
-  
 // Use the Contensis client to fetch the entry and set some state.
-if (query.entryId) {
-  let { data, error } = await useAsyncData('data', () =>
-    $client.entries.get(query.entryId),
-  );
-  if (!error.value) {
-    title.value = data.value.entryTitle;
-    description.value = data.value.entryDescription;
-    contentType = data.value.contentTypeId;
+await callOnce(async () => {
+  if (query.entryId) {
+    let { data, error } = await useAsyncData('data', () =>
+      $client.entries.get(query.entryId),
+    );
+    if (!error.value) {
+      title.value = data.value.title;
+      description.value = data.value.description;
+      contentType = data.value.contentTypeId;
+    }
+  } else {
+    title.value = "Page not found";
   }
-} 
+});
+
 
 // This app is intended to use for a listing page.
 // So here we fetch the entries that we need to list.
-if (contentType) {
+await callOnce(async () => {
+  if (contentType) {
     let { data, error } = await useAsyncData('data', () =>
       $client.entries.list(contentType),
     );
     if (!error.value) {
       items.value = data.value.items;
     }
-}
+  }
+});
 
 useHead({
   link: [{ rel: 'icon', type: 'image/png', href: 'favicon.png' }]
