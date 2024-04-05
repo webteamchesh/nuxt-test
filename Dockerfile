@@ -1,5 +1,5 @@
 ARG NODE_VERSION=20.9.0
-
+LABEL org.opencontainers.image.source="https://github.com/webTeamChesh/nuxt-test"
 FROM node:${NODE_VERSION}-slim as base
 
 ENV NODE_ENV=production
