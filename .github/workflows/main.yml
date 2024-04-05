@@ -19,10 +19,10 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        tags: ghcr.io/webteamchesh/nuxttest:${{ github.run_number }}
+        tags: ghcr.io/webteamchesh/nuxt-test:${{ github.run_number }}
 
     - name: Docker push
-      run: docker push ghcr.io/webteamchesh/nuxttest:${{ github.run_number }}
+      run: docker push ghcr.io/webteamchesh/nuxt-test:${{ github.run_number }}
   job2:
     runs-on: ubuntu-latest
     needs: build
@@ -36,7 +36,7 @@ jobs:
         block-id: nuxttest
         alias: chesheast
         project-id: blockstest
-        image-uri: ghcr.io/webteamchesh/nuxttest:${{ github.run_number }}
+        image-uri: ghcr.io/webteamchesh/nuxt-test:${{ github.run_number }}
         client-id: ${{ secrets.CLIENT_ID }}
         shared-secret: ${{ secrets.SHARED_SECRET }}
         git-token: ${{ secrets.GITHUB_TOKEN }}
