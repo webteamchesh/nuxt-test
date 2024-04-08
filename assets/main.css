@@ -2,15 +2,18 @@
 .container {
   background-color: Azure;
 }
+
 .listing {
   margin-top: 2rem;
   background-color: Wheat;
   padding: .5rem;
 }
+
 .footer,
 .header {
   background-color: Teal;
 }
+
 .footer p,
 .header p {
   color: White;
@@ -19,6 +22,7 @@
   text-align: center;
   height: 12vh;
 }
+
 h1 {
   color: DarkGreen;
 }

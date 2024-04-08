@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 // Bring in the Contensis client from plugins.
-const { $client } = useNuxtApp();
+const  client  = useClient();
 
 // Get the query string so we can identify the entry attached to this node.
 const query = useRoute().query;
@@ -12,17 +12,18 @@ const description = useState('description', () => "");
 const items = useState('items', () => []);
 let contentType;
 
-
 // Use the Contensis client to fetch the entry and set some state.
 await callOnce(async () => {
   if (query.entryId) {
     let { data, error } = await useAsyncData('data', () =>
-      $client.entries.get(query.entryId),
+      client.entries.get(query.entryId),
     );
     if (!error.value) {
       title.value = data.value.title;
       description.value = data.value.description;
       contentType = data.value.contentTypeId;
+    } else {
+      console.log(error.value);
     }
   } else {
     title.value = "Page not found";
@@ -35,7 +36,7 @@ await callOnce(async () => {
 await callOnce(async () => {
   if (contentType) {
     let { data, error } = await useAsyncData('data', () =>
-      $client.entries.list(contentType),
+      client.entries.list(contentType),
     );
     if (!error.value) {
       items.value = data.value.items;
@@ -43,9 +44,6 @@ await callOnce(async () => {
   }
 });
 
-useHead({
-  link: [{ rel: 'icon', type: 'image/png', href: 'favicon.png' }]
-})
 </script>
 
 <template>
