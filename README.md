@@ -1,2 +1,2 @@
-# Test Nuxt app with Pinia 
+# Test Nuxt app
 
